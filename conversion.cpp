@@ -1,11 +1,4 @@
 //This program is used to convert infix expression to postfix expression and it can
-// convert the prefix to postfix expression
-//This is a incomplete program ! 
-/*
-Erase the following once your done Akshay : 
-1.prefix to infix
-2.postfix to infix
-*/
 #include<iostream>
 #include<stack>
 #include<algorithm>
@@ -193,8 +186,6 @@ int main()
 	conversion c;
 	string exp;
 	char status;
-	//string res = c.infixToPostfix(exp);
-	//cout<<"The result is: "<<res<<endl;
 	do{
 		cout<<"****MENU*****"<<endl;
 		cout<<"1.To convert infix To prefix: "<<endl;
@@ -205,35 +196,17 @@ int main()
 		cout<<"************"<<endl;
 		cout<<"Enter your choice: "<<endl;
 		cin>>ch;
-		string prefix,infixRev;
+		string prefix,infix;
 		switch(ch)
 		{
 			case 1:
 				cout<<"Enter the infix expression"<<endl;
-				cin>>exp;
-				infixRev = c.customRev(exp);
-				reverse(infixRev.begin(),infixRev.end());
-			    prefix = c.infixToPostfix(infixRev);
-				reverse(prefix.begin(),prefix.end());
-				cout<<"The prefix is: "<<prefix<<endl;
+				cin>>infix;
+				postfix = infixToPostfix(infix);
+				cout<<"The postfix is: "<<endl;
 			break;
-
+				
 			case 2:
-				cout<<"Enter the prefix expression: "<<endl;
-				cin>>prefix;
-				c.preToPostfix(prefix);
-			break;
-
-			case 3:
-				//Enter the code for prefix to infix
-			break;
-
-			
-			case 4:
-				//Enter the code for postfix to infix
-			break;
-
-			case 5:
 				exit(EXIT_SUCCESS);
 			break;
 
