@@ -102,7 +102,7 @@ class poly{
 	      	//cout<<"The complete addition in polynomial format is : "<<endl;
 	      	int t = highestDegree ;
 	       	cout<<"Code check: highestDegree value is: "<<highestDegree;
-	       	int result,x;
+	       	int result=0,x=0;
 	       cout<<"Enter the value of x: "<<endl;
 	       cin>>x;
 	        for(int i = 0; i <= highestDegree; ++i)
