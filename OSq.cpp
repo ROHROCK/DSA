@@ -145,23 +145,46 @@ void spq::prioqadd()
 
 int main()
 {
+    char status;
     spq s1,s2; //object creation. s1 for simple Q and s2 for priority Q
     int ch;
     do
     {
-     cout<< "\n\t!!!Operating System Job Queue!!!" << endl; // prints the msg.
-     cout<<"\n1.SimpleQ Add_Job\n2.SimpleQ Del_Job\n3.Show SimpleQ\n4.PrioQ Add_Job\n5.PrioQ Del_Job\n6.Show PrioQ";
-     cout<<"\nEnter Your Choice:";
-     cin>>ch;
-     switch(ch)
-     {
-      case 1:s1.simpqadd();break;//calling adding element in simple Q without priority.
-      case 2:s1.delsimpleQ();break;
-      case 3:s1.showsimpleQ();break;
-      case 4:s2.prioqadd();break;//calling adding element in priority Q with priority.
-      case 5:s2.delprioQ();break;
-      case 6:s2.showprioQ();break;
-     }
-    }while(ch!=7);
+         cout<< "\n\t!!!Operating System Job Queue!!!" << endl; // prints the msg.
+         cout<<"1.Simple Queue Add_Job"<<endl;
+         cout<<"2.SimpleQ Del_Job"<<endl;
+         cout<<"3.Show SimpleQ"<<endl;
+         cout<<"4.PrioQ Add_Job"<<endl;
+         cout<<"5.PrioQ Del_Job"<<endl;
+         cout<<"6.Show PrioQ"<<endl;;
+         cout<<"7.Exit"<<endl;
+         cout<<"\nEnter Your Choice:";
+         cin>>ch;
+         switch(ch)
+         {
+          case 7:
+                 exit(EXIT_SUCCESS);
+          case 1:   
+                 s1.simpqadd();//calling adding element in simple Q without priority.
+          break;
+          case 2:
+                 s1.delsimpleQ();
+          break;
+          case 3:
+                 s1.showsimpleQ();
+          break;
+          case 4:
+                 s2.prioqadd(); //calling adding element in priority Q with priority.
+          break;
+          case 5:
+                 s2.delprioQ();
+          break;
+          case 6:
+                 s2.showprioQ();
+          break;
+        }
+        cout<<"Do you want to continue ? [Y/N]"<<endl;
+        cin>>status;
+    }while(status == 'y' || status == 'Y'); 
     return 0;
 }
