@@ -1,7 +1,7 @@
 // Group E : program No. 35
 //Write C++ program to store first year percentage of students in array. Write function for
 //sorting array of floating point numbers in ascending order using
-//a) Selection Sort b) Bubble sort and display top five scores.
+//quick sort
 #include<iostream>
 #define MAX 20
 using namespace std;
