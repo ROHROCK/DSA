@@ -1,18 +1,21 @@
 #include <iostream>
+#include<stdlib.h>
 #define MAX 30
 using namespace std;
+
+int min(int a,int b){return (a<=b)?a:b;}
 
 class student
 {
 		public :
-		int stud[MAX],num,key;
+		int stud[MAX],size,key;
 
 		void getData()
 		{
 			cout<<"Enter the number of students present: "<<endl;
-			cin>>num;
+			cin>>size;
 			cout<<"Enter their roll numbers.."<<endl;
-			for (int i = 0; i < num; ++i)
+			for (int i = 0; i < size; ++i)
 				cin>>stud[i];
 		}
 		void getKey()
@@ -24,15 +27,15 @@ class student
 		{
 			getKey();
 			//main searching code 
-			int last = stud[num-1];
-			stud[num-1] = key;
+			int last = stud[size-1];
+			stud[size-1] = key;
 			int i= 0;
 			while(stud[i] != key)
 			{
 				i++;
 			}
-			stud[num-1] = last;
-			if ((i<num-1)||(last == key))
+			stud[size-1] = last;
+			if ((i<size-1)||(last == key))
 				cout<<"Present !";
 			else
 				cout<<"Not Present !";
@@ -42,7 +45,7 @@ class student
 		{
 			getKey();
 			int f = 0;
-			for (int i = 0; i < num; ++i)
+			for (int i = 0; i < size; ++i)
 			{
 				if (stud[i] == key)
 				{
@@ -59,7 +62,6 @@ class student
 
 		int binarySearch(int arr[], int l, int r, int x)
 		{
-		    earsort();
 		   if (r >= l)
 		   {
 		        int mid = l + (r - l)/2;
@@ -81,13 +83,13 @@ class student
 
 	void sort()
 	{
-		cout<<"Sorting the array in ascending order: "<<endl;
+		cout<<"Sorting the array in ascending order..."<<endl;
 		int min ;
 		min = stud[0];
-		for (int i = 0; i < num; ++i)
+		for (int i = 0; i < size; ++i)
 		{
 			min = i;
-			for (int j = i+1; j < num; j++)
+			for (int j = i+1; j < size; j++)
 			{
 				if (stud[min] > stud[j])
 				{
@@ -102,12 +104,62 @@ class student
 			}
 		}
 	}
-	void fibonacciSearch();
+	int fibonacciSearch();
 };
 
-void student::fibonacciSearch()
+//code for fibonacci
+int student::fibonacciSearch()
 {
-	cout<<"Entered fib search"<<endl;
+	//sort the array
+	sort();
+	//get the key from the user
+	getKey();
+	//comparing last element 
+	if(stud[size-1]==key)
+		return size-1;
+
+	//assigning fibonacci values to var : fibM2 ,fibM1 ,fibM 
+	int fibM,fibM1,fibM2;
+
+	fibM1=1,fibM2=1;
+	fibM=fibM1+fibM2;
+	while(fibM<size)
+	{
+		fibM2=fibM1;
+		fibM1=fibM;
+		fibM=fibM1+fibM2;
+	}
+
+	//initiating  offset=-1
+	int i=0;
+	int offset=-1;
+
+	//search element in arry till greater fibM greter than 1
+	while(fibM>1)
+	{
+		i=min(offset+fibM2,size-1);
+
+		if(stud[i]<key)
+		{
+			fibM=fibM1;
+			fibM1=fibM2;
+			fibM2=fibM-fibM1;
+			offset=i;
+		}
+		else if(stud[i]>key)
+		{
+			fibM=fibM2;
+			fibM1=fibM1-fibM;
+			fibM2=fibM-fibM1;
+		}
+
+		//element not foundn :)
+		else 
+			return i;
+	}
+
+	//element not found :|
+	return -1;
 }
 int main()
 {
@@ -115,13 +167,12 @@ int main()
 	int ch,key,res;
 	char status;
 	do{
-		cout<<"1.To enter the roll number"<<endl;
-		cout<<"2.To search using sentinental search"<<endl;
-		cout<<"3.To search using linear search"<<endl;
-		cout<<"4.To search using binary search"<<endl;
-		cout<<"5.To search using fibonacci search"<<endl;
-		cout<<"6.To sort the array"<<endl;
-		cout<<"7.To exit"<<endl;
+		cout<<"1.To enter the Roll number"<<endl;
+		cout<<"2.To search using Sentinental search"<<endl;
+		cout<<"3.To search using Linear search"<<endl;
+		cout<<"4.To search using Binary search"<<endl;
+		cout<<"5.To search using Fibonacci search"<<endl;
+		cout<<"6.To exit"<<endl;
 		cout<<"***************************\nEnter your choice: "<<endl;
 		cin>>ch;
 		switch(ch)
@@ -130,17 +181,23 @@ int main()
 			case 2: s.sentinentalSearch(); break;
 			case 3: s.linearSearch(); break;
 			case 4: 
+				s.sort();
 				s.getKey();
-				res = s.binarySearch(s.stud,0,s.num-1,s.key); 
+				res = s.binarySearch(s.stud,0,s.size-1,s.key); 
 				if (res == -1)
 				{
 					cout<<"Not Found !"<<endl;
 				}else
 					cout<<"found !"<<res<<endl;
 			break;
-			case 5: s.fibonacciSearch(); break;
-			case 6: s.sort(); break;
-			case 7: exit(EXIT_SUCCESS); break;
+			case 5: 
+				res = s.fibonacciSearch(); 
+				if(res == -1)
+					cout<<"Element not found !"<<endl;
+				else
+					cout<<"Element found at: "<<res<<endl;					
+			break;
+			case 6: exit(EXIT_SUCCESS); break;
 			default: 
 					cout<<"Wrong choice !"<<endl;
 		}
