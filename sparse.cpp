@@ -1,3 +1,4 @@
+//Akshay modify the functions
 #include<iostream>
 #include<stdlib.h>
 #define MAX 3
@@ -5,9 +6,13 @@ using namespace std;
 
 class sparse 
 {
-	int mat1[MAX][MAX] ,mat2[MAX][MAX];
+	int mat1[MAX][MAX] ,mat2[MAX][MAX],sp1[MAX][3]sp2[MAX][3];
 	
 	public : 
+	void addSparse()
+	{
+		
+	}
 	void inMat()
 	{
 		cout<<"Enter the elements for Matrix 1: "<<endl;
