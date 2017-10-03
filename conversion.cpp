@@ -189,10 +189,7 @@ int main()
 	do{
 		cout<<"****MENU*****"<<endl;
 		cout<<"1.To convert infix To prefix: "<<endl;
-		cout<<"2.To convert prefix To postfix: "<<endl;
-		cout<<"3.To convert prefix to infix: "<<endl;
-		cout<<"4.To convert postfix to infix"<<endl;
-		cout<<"5.Exit"<<endl;
+		cout<<"2.Exit"<<endl;
 		cout<<"************"<<endl;
 		cout<<"Enter your choice: "<<endl;
 		cin>>ch;
