@@ -37,35 +37,48 @@ class stringClass{
 		void checkSubString()
 		{
 				char sub[5];
+				//accept the substring 
 				cout<<"Enter the substring: "<<endl;
 				cin>>sub;
 				int i=0,j=0,index;
+				//this is the main code
 				while(arr1[i] != '\0')
 				{
+						//first check if the intial alphabet is present in the main string
+						//if intial is not found then exit the while as that index points to null
+						//if the intial is found exit as the index is pointing to the start alpha
 						while(arr1[i] != sub[0] && arr1[i] == '\0')
 							i++;
-
+						//this if will check the char of arr[index] .. if it is null exit 
+						//if it is NOT null it is pointing the initial sub char
 						if(arr1[i] == '\0')
 						{
 							cout<<"Substring not found!"<<endl;
 							exit(EXIT_SUCCESS);
 						}
+						//copy the initial char to the a variable
 						index = i;
+					//this is personally compare the arr[] and sub[] making sure they both dont end up empty
+					//and inc to count if they are equal... then keep incrementing..
+					//else exit the loop
 					    while (arr1[i] == sub[j] && arr1[i] != '\0' && sub[j] != '\0') 
 					    {
         					 i++;
         					 j++;
       					}
 
-
+					//if the sub array incremented till the end means .. the whole substring has been 
+					//traversed .. hence the position is found at main string and print the index var
       					if (sub[j]=='\0')
-      					{
       						cout<<"The substring is found at location: "<<index;
-      					}
+      					//if the whole string is traversed till the end .. then the substring is not found..
       					if(arr1[i] == '\0')
       						cout<<"Substring is not found !"<<endl;
 
+					//skip the index till the index saved as there is no inital char in that range ..
+					//then add 1 to increment the index for the Main string
       					i = index + 1;
+					//set the substring index to 0 as to reset for the next check..
       					j = 0;
 				}
 		}
