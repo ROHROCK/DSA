@@ -68,6 +68,12 @@ class link
 		cout<<"Deleting the negative node in the list";
 		prev = headV;
 		ptr = headV->next;
+		if(ptr->data < 0)
+		{
+			//if there is only single node 
+			prev->next = ptr->next;
+			delete(ptr);
+		}
 		while(ptr != NULL)
 		{
 			if(ptr->data < 0)
