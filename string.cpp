@@ -51,11 +51,9 @@ class stringClass{
 							i++;
 						//this if will check the char of arr[index] .. if it is null exit 
 						//if it is NOT null it is pointing the initial sub char
-						if(arr1[i] == '\0')
-						{
-							cout<<"Substring not found!"<<endl;
+						if(arr1[i] == '\0'
 							exit(EXIT_SUCCESS);
-						}
+						   
 						//copy the initial char to the a variable
 						index = i;
 					//this is personally compare the arr[] and sub[] making sure they both dont end up empty
