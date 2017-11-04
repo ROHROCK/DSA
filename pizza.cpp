@@ -61,18 +61,18 @@ void pizza::make_payment(int n)
       for(int i=0;i<n;i++)
       {
           item=porder[front];
-          if(front==rear)
+          if(front==rear) //if there is only one order in the queue 
           {
-               front=rear=-1;
+               front=rear=-1; //set the q to null
           }
           else
           {
-              front=(front+1)%size;
+              front=(front+1)%size; //there exist more than one order in the queue
           }
-          cout<<"\t"<<item;
+          cout<<"\t"<<item; //print the item at the console
       }
-      cout<<"\nTotal amount to pay : "<<n*100;
-      cout<<"\nThank you visit Again....\n";
+      cout<<"\nTotal amount to pay : "<<n*100; //all pizza cost at 100 considered..
+      cout<<"\nThank you visit Again....\n"; 
     }
 }
 
